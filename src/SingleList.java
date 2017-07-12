@@ -165,4 +165,50 @@ public class SingleList {
 
         return head;
     }
+
+    public static SingleListNode deleteDuplicate(SingleListNode head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+
+        SingleListNode walkNode = head;
+        SingleListNode duplicateBegin = head;
+        SingleListNode duplicateEnd = head;
+        SingleListNode lastSafeNode = null;
+        int signedVal = head.val;
+
+        while (walkNode != null) {
+            while (duplicateEnd.next != null && duplicateEnd.next.val == signedVal) {
+                duplicateEnd = duplicateEnd.next;
+            }
+
+            if (duplicateEnd != duplicateBegin) {
+                if (duplicateBegin == head) {
+                    head = duplicateEnd.next;
+                    duplicateBegin = head;
+                    duplicateEnd = head;
+                    walkNode = duplicateBegin;
+                } else {
+                    lastSafeNode.next = duplicateEnd.next;
+                    duplicateBegin = lastSafeNode.next;
+                    duplicateEnd = lastSafeNode.next;
+                    walkNode = lastSafeNode.next;
+                }
+            } else {
+                lastSafeNode = duplicateBegin;
+                duplicateBegin = walkNode.next;
+                duplicateEnd = walkNode.next;
+                walkNode = lastSafeNode.next;
+            }
+            if (duplicateBegin != null) {
+                signedVal = duplicateBegin.val;
+                continue;
+            } else {
+                return head;
+            }
+
+        }
+
+        return head;
+    }
 }
