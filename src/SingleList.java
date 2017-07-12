@@ -2,6 +2,23 @@
  * Created by sujunfei on 2017/7/11.
  */
 public class SingleList {
+
+    public static int getListLength(SingleListNode head) {
+        int count = 0;
+        if (head == null) {
+            count = 0;
+        } else if (head.next == null) {
+            count = 1;
+        } else {
+            SingleListNode walkNode = head;
+            while (walkNode != null) {
+                count++;
+                walkNode = walkNode.next;
+            }
+        }
+
+        return count;
+    }
     // 翻转整个单链表
     public static SingleListNode reverse(SingleListNode head) {
         if (head == null) {
@@ -131,6 +148,20 @@ public class SingleList {
                 }
             }
         }
+
+        return head;
+    }
+
+    // 归并排序(时间复杂度为O(nlogn),空间复杂度为O(n))
+    public static SingleListNode mergeSort(SingleListNode head) {
+
+
+        return head;
+    }
+
+    public static SingleListNode quickSort(SingleListNode head) {
+        int i = 0;
+
 
         return head;
     }
