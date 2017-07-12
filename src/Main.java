@@ -3,7 +3,7 @@
  */
 public class Main {
     public static void main(String[] args) {
-        int[] vals = {2, 1, 4, 3, 6, 5};
+        int[] vals = {4, 19, 14, 5, 3, 1, 5, 8, 15, 11};
         SingleListNode normalList = SingleList.init(vals);
 //        SingleListNode reverseList = SingleList.reverse(normalList);
         SingleListNode insertSortList = SingleList.insertSort(normalList);

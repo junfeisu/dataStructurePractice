@@ -104,7 +104,7 @@ public class SingleList {
         SingleListNode temp = null;
 
         while (walkNode != null) {
-            if (walkNode.val > lastInOderNode.val) {
+            if (walkNode.val >= lastInOderNode.val) {
                 lastInOderNode = walkNode;
                 walkNode = walkNode.next;
                 continue;
@@ -120,7 +120,7 @@ public class SingleList {
                 } else {
                     while (h.next != null && h.next != temp) {
                         if (h.next.val > temp.val) {
-                            h.next.next = walkNode.next;
+                            lastInOderNode.next = walkNode.next;
                             temp.next = h.next;
                             h.next = temp;
                             walkNode = lastInOderNode.next;
