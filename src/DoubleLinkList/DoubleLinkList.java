@@ -1,5 +1,7 @@
 package DoubleLinkList;
 
+import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
+
 /**
  * Created by sujunfei on 2017/8/15.
  */
@@ -7,7 +9,7 @@ public class DoubleLinkList<T> {
     private Node<T> head;
 
     public DoubleLinkList() {
-        head = new Node<T>(null);
+
     }
 
     public Node<T> getHead() {
@@ -60,18 +62,18 @@ public class DoubleLinkList<T> {
 
     public Node<T> insert(int index, T data) throws Exception {
         int listLen = getLength();
-        if (index < 1 || index > listLen) {
+        if (head == null) {
+            head = new Node<T>(data);
+            return head;
+        } else if (index < 1 || index > listLen) {
             return head;
         }
 
-        Node<T> walkNode = getHead();
+        Node<T> walkNode = head;
         Node<T> prevNode = null;
-        int count = 0;
-        while (walkNode != null) {
+        int count = 1;
+        while (walkNode != null && count != index) {
             count++;
-            if (count == index) {
-                break;
-            }
             prevNode = walkNode;
             walkNode = walkNode.next;
         }
@@ -79,6 +81,9 @@ public class DoubleLinkList<T> {
         Node<T> insertedNode = new Node<T>(data);
         insertedNode.prev = prevNode;
         insertedNode.next = walkNode;
+        if (prevNode != null) {
+            prevNode.next = insertedNode;
+        }
         walkNode.prev = insertedNode;
 
         if (prevNode == null) {
@@ -135,5 +140,69 @@ public class DoubleLinkList<T> {
         return deletedNode;
     }
 
+    public Node<T> reverse() {
+        if (head == null || head.next == null) {
+            return head;
+        }
 
+        Node<T> prevNode = head;
+        Node<T> currentNode = head.next;
+        Node<T> nextNode = null;
+
+        while (currentNode != null) {
+            nextNode = currentNode.next;
+            prevNode.prev = currentNode;
+            currentNode.next = prevNode;
+            prevNode = currentNode;
+            currentNode.prev = nextNode;
+            currentNode = nextNode;
+        }
+
+        prevNode.prev = null;
+        head.next = null;
+        head = prevNode;
+
+        return head;
+    }
+
+    public Node<T> get(int index) {
+        int listSize = getLength();
+        if (index < 1 || index > listSize) {
+            return null;
+        }
+
+        Node<T> searchedNode;
+        Node<T> walkNode = head;
+
+        int count = 1;
+        while (walkNode != null && count != index) {
+            count++;
+            walkNode = walkNode.next;
+        }
+
+        if (walkNode != null) {
+            searchedNode = walkNode;
+        } else {
+            searchedNode = null;
+        }
+
+        return searchedNode;
+    }
+
+    public void consoleList() {
+        if (head == null) {
+            System.out.print("该链表为空表");
+        }
+        Node<T> walkNode = head;
+        while (walkNode != null) {
+            if (walkNode.next == null) {
+                System.out.print(walkNode.val + "->null");
+            } else {
+                System.out.print(walkNode.val + "->");
+            }
+            walkNode = walkNode.next;
+        }
+
+        System.out.println("");
+    }
 }

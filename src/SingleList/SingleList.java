@@ -24,7 +24,6 @@ public class SingleList<T> {
 
     // 在链表末尾插入节点
     public Node<T> add(T data) throws Exception {
-        Node<T> head = getHead();
         if (head == null) {
             head = new Node<T>(data);
         } else {
@@ -70,7 +69,6 @@ public class SingleList<T> {
     // 获取链表长度
     public int getLength() {
         int len = 0;
-        Node<T> head = getHead();
         Node<T> currentNode = head;
 
         while (currentNode != null) {
@@ -88,7 +86,6 @@ public class SingleList<T> {
             return null;
         }
 
-        Node<T> head = getHead();
         head.val = arr[0];
         Node<T> currentNode = null;
 
@@ -132,7 +129,6 @@ public class SingleList<T> {
     public boolean hasLoop() {
         boolean result = false;
 
-        Node<T> head = getHead();
         Node<T> fast = head;
         Node<T> slow = head;
 
@@ -152,7 +148,6 @@ public class SingleList<T> {
      碰撞节点到环节点的距离和头结点到环节点的距离是相等的
      */
     public Node<T> locateChainNode() {
-        Node<T> head = getHead();
         Node<T> fast = head;
         Node<T> slow = head;
 
