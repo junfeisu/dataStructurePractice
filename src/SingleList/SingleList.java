@@ -107,8 +107,6 @@ public class SingleList<T> {
 
     // 翻转单链表
     public Node<T> reverse() {
-        Node<T> head = getHead();
-
         if (head == null || head.next == null) {
             return head;
         }
@@ -128,5 +126,67 @@ public class SingleList<T> {
         head = prevNode;
 
         return head;
+    }
+
+    // 判断是否有环
+    public boolean hasLoop() {
+        boolean result = false;
+
+        Node<T> head = getHead();
+        Node<T> fast = head;
+        Node<T> slow = head;
+
+        while (fast != null && fast.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+            if (fast == slow) {
+                result = true;
+                break;
+            }
+        }
+
+        return result;
+    }
+
+    /**
+     碰撞节点到环节点的距离和头结点到环节点的距离是相等的
+     */
+    public Node<T> locateChainNode() {
+        Node<T> head = getHead();
+        Node<T> fast = head;
+        Node<T> slow = head;
+
+        while (fast != null && fast.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+            if (fast == slow) {
+                break;
+            }
+        }
+
+        if (fast == null || fast.next == null) {
+            return null;
+        }
+
+        slow = head;
+        while (slow != fast) {
+            slow = slow.next;
+            fast = fast.next;
+        }
+
+        return slow;
+    }
+
+    public void consoleList() {
+        Node<T> walkNode = head;
+        while (walkNode != null) {
+            if (walkNode.next == null) {
+                System.out.print(walkNode.val + "->null");
+            } else {
+                System.out.print(walkNode.val + "->");
+            }
+            walkNode = walkNode.next;
+        }
+        System.out.println("");
     }
 }
