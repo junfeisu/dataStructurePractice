@@ -1,4 +1,5 @@
 import DoubleLinkList.DoubleLinkList;
+import LoopSingleList.LoopSingleList;
 import SequenceList.SequenceList;
 import SingleList.SingleList;
 import SingleList.Node;
@@ -42,34 +43,57 @@ public class Main {
         /**
          * 测试双链表
          */
-        DoubleLinkList<Integer> test = new DoubleLinkList<Integer>();
-        System.out.println("是否为空列表：" + test.isEmpty());
+//        DoubleLinkList<Integer> test = new DoubleLinkList<Integer>();
+//        System.out.println("是否为空列表：" + test.isEmpty());
+//        Integer[] arr = {1};
+//        test.init(arr);
+//        System.out.println("初始化的链表为:");
+//        test.consoleList();
+//        System.out.println("初始化链表的长度为：" + test.getLength());
+//
+//        test.remove(1);
+//        System.out.println("删除后的链表为：");
+//        test.consoleList();
+//        System.out.println("删除后的链表长度为：" + test.getLength());
+//
+//        test.insert(1, 2);
+//        test.insert(1, 3);
+//        test.insert(2, 4);
+//        System.out.println("插入后的链表是：");
+//        test.consoleList();
+//
+//        System.out.println("第一个节点的值为：" + test.get(1).val);
+//
+//        test.reverse();
+//        System.out.println("翻转后的列表为：");
+//        test.consoleList();
+//
+//        System.out.println("是否为空列表：" +test.isEmpty());
+//        test.clear();
+//        System.out.print("清空后的列表为：");
+//        test.consoleList();
+
+        LoopSingleList<Integer> test = new LoopSingleList<Integer>();
         Integer[] arr = {1};
         test.init(arr);
-        System.out.println("初始化的链表为:");
         test.consoleList();
-        System.out.println("初始化链表的长度为：" + test.getLength());
-
-        test.remove(1);
-        System.out.println("删除后的链表为：");
-        test.consoleList();
-        System.out.println("删除后的链表长度为：" + test.getLength());
 
         test.insert(1, 2);
-        test.insert(1, 3);
-        test.insert(2, 4);
-        System.out.println("插入后的链表是：");
+        test.insert(2, 3);
         test.consoleList();
 
-        System.out.println("第一个节点的值为：" + test.get(1).val);
-
-        test.reverse();
-        System.out.println("翻转后的列表为：");
+        test.remove(1);
+        test.consoleList();
+        test.insert(3, 1);
         test.consoleList();
 
-        System.out.println("是否为空列表：" +test.isEmpty());
         test.clear();
-        System.out.print("清空后的列表为：");
         test.consoleList();
+
+        Integer[] more = {1, 2, 3, 4};
+        test.init(more);
+        test.consoleList();
+
+        System.out.println("第5个节点的值是：" + test.get(5).val);
     }
 }
