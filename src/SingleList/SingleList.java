@@ -43,23 +43,23 @@ public class SingleList<T> {
 
     // 删除节点
     public Node<T> remove(T data) throws Exception {
-        Node<T> head = getHead();
+        int listLen = getLength();
 
-        if (head == null) {
+        if (listLen == 0 || (listLen == 1 && head.val != data)) {
+            return head;
+        } else if (listLen == 1 && head.val == data) {
+            head = null;
             return head;
         }
 
         Node<T> currentNode = head;
         Node<T> beforeNode = null;
-        while (currentNode != null) {
-            if (currentNode.val == data) {
-                break;
-            }
+        while (currentNode != null && currentNode.val != data) {
             beforeNode = currentNode;
             currentNode = currentNode.next;
         }
         if (beforeNode == null) {
-            head = null;
+            head = currentNode.next;
         } else {
             beforeNode.next = currentNode.next;
         }

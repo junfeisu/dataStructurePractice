@@ -22,13 +22,13 @@ public class Main {
         Integer[] arr = {1, 3, 5, 2, 6};
         test.init(arr);
         test.consoleList();
-        System.out.println("length is " + test.getLength());
+        System.out.println("init length is " + test.getLength());
         test.add(7);
         test.consoleList();
-        System.out.println("length is " + test.getLength());
-        test.remove(5);
+        System.out.println("add length is " + test.getLength());
+        test.remove(1);
         test.consoleList();
-        System.out.println("length is " + test.getLength());
+        System.out.println("remove length is " + test.getLength());
         test.reverse();
         test.consoleList();
         Node<Integer> walkNode = test.getHead();
