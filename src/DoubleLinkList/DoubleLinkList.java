@@ -8,9 +8,7 @@ import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 public class DoubleLinkList<T> {
     private Node<T> head;
 
-    public DoubleLinkList() {
-
-    }
+    public DoubleLinkList() {}
 
     public Node<T> getHead() {
         return head;
