@@ -2,6 +2,7 @@ import DoubleLinkList.DoubleLinkList;
 import LoopDoubleList.LoopDoubleList;
 import LoopSingleList.LoopSingleList;
 import SequenceList.SequenceList;
+import SequenceStack.SequenceStack;
 import SingleList.SingleList;
 import SingleList.Node;
 
@@ -102,28 +103,42 @@ public class Main {
         /**
          * 测试循环双链表
          */
-        LoopDoubleList<Integer> test = new LoopDoubleList<Integer>();
-        Integer[] arr = {1, 2, 3, 4};
-        System.out.println("链表是否为空：" + test.isEmpty());
-        test.init(arr);
-        test.consoleList();
-        System.out.println("链表的长度是：" + test.getLength());
-
-        test.remove(1);
-        test.consoleList();
-        System.out.println("链表的长度是：" + test.getLength());
-
-        test.insert(4, 6);
-        test.consoleList();
-
-        test.insert(3, 7);
-        test.consoleList();
-
-        System.out.println("第1个节点的值是：" + test.get(1).val);
-        System.out.println("第2个节点的值是：" + test.get(2).val);
-
-        System.out.println("链表是否为空：" + test.isEmpty());
-        test.clear();
-        System.out.println("链表是否为空：" + test.isEmpty());
+//        LoopDoubleList<Integer> test = new LoopDoubleList<Integer>();
+//        Integer[] arr = {1, 2, 3, 4};
+//        System.out.println("链表是否为空：" + test.isEmpty());
+//        test.init(arr);
+//        test.consoleList();
+//        System.out.println("链表的长度是：" + test.getLength());
+//
+//        test.remove(1);
+//        test.consoleList();
+//        System.out.println("链表的长度是：" + test.getLength());
+//
+//        test.insert(4, 6);
+//        test.consoleList();
+//
+//        test.insert(3, 7);
+//        test.consoleList();
+//
+//        System.out.println("第1个节点的值是：" + test.get(1).val);
+//        System.out.println("第2个节点的值是：" + test.get(2).val);
+//
+//        System.out.println("链表是否为空：" + test.isEmpty());
+//        test.clear();
+//        System.out.println("链表是否为空：" + test.isEmpty());
+        /**
+         * 测试顺序栈
+         */
+        SequenceStack<Integer> test = new SequenceStack<Integer>();
+        System.out.println("是否为空栈：" + test.isEmpty());
+        test.consoleStack();
+        test.push(4);
+        test.push(3);
+        test.consoleStack();
+        test.pop();
+        test.push(2);
+        test.consoleStack();
+        System.out.println("栈的长度为：" + test.getLength());
+        System.out.println("栈顶元素为：" + test.getPeek());
     }
 }
