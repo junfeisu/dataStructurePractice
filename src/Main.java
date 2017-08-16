@@ -1,4 +1,5 @@
 import DoubleLinkList.DoubleLinkList;
+import LinkQueue.LinkQueue;
 import LinkStack.LinkStack;
 import LoopDoubleList.LoopDoubleList;
 import LoopSingleList.LoopSingleList;
@@ -165,24 +166,43 @@ public class Main {
         /**
          * 测试顺序队列
          */
-        SequenceQueue<Integer> test = new SequenceQueue<Integer>(5);
+//        SequenceQueue<Integer> test = new SequenceQueue<Integer>(5);
+//        test.consoleQueue();
+//        test.enQueue(2);
+//        test.enQueue(1);
+//        test.enQueue(3);
+//        test.enQueue(4);
+//        test.consoleQueue();
+//
+//        test.enQueue(6);
+//        test.consoleQueue();
+//
+//        System.out.println("队列中元素个数是：" + test.getLength());
+//        System.out.println("出队元素是：" + test.deQueue());
+//        test.consoleQueue();
+//        System.out.println("队首元素是：" + test.getFront());
+//
+//        test.clear();
+//        System.out.println("队列中元素个数是：" + test.getLength());
+//        test.consoleQueue();
+        /**
+         * 测试非循环链队
+         */
+        LinkQueue<Integer> test = new LinkQueue<Integer>(6);
         test.consoleQueue();
-        test.enQueue(2);
-        test.enQueue(1);
-        test.enQueue(3);
+        System.out.println("是否是空队列:" + test.isEmpty());
+
         test.enQueue(4);
+        test.enQueue(9);
         test.consoleQueue();
 
-        test.enQueue(6);
+        System.out.println("出队的元素是：" + test.deQueue().val);
         test.consoleQueue();
-
-        System.out.println("队列中元素个数是：" + test.getLength());
-        System.out.println("出队元素是：" + test.deQueue());
-        test.consoleQueue();
+        System.out.println("队列中元素的个数是：" + test.getLength());
         System.out.println("队首元素是：" + test.getFront());
 
         test.clear();
-        System.out.println("队列中元素个数是：" + test.getLength());
         test.consoleQueue();
+        System.out.println("是否是空队列:" + test.isEmpty());
     }
 }
