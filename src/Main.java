@@ -1,4 +1,5 @@
 import DoubleLinkList.DoubleLinkList;
+import LoopDoubleList.LoopDoubleList;
 import LoopSingleList.LoopSingleList;
 import SequenceList.SequenceList;
 import SingleList.SingleList;
@@ -73,27 +74,56 @@ public class Main {
 //        System.out.print("清空后的列表为：");
 //        test.consoleList();
 
-        LoopSingleList<Integer> test = new LoopSingleList<Integer>();
-        Integer[] arr = {1};
+        /**
+         * 测试循环单链表
+         */
+//        LoopSingleList<Integer> test = new LoopSingleList<Integer>();
+//        Integer[] arr = {1};
+//        test.init(arr);
+//        test.consoleList();
+//
+//        test.insert(1, 2);
+//        test.insert(2, 3);
+//        test.consoleList();
+//
+//        test.remove(1);
+//        test.consoleList();
+//        test.insert(3, 1);
+//        test.consoleList();
+//
+//        test.clear();
+//        test.consoleList();
+//
+//        Integer[] more = {1, 2, 3, 4};
+//        test.init(more);
+//        test.consoleList();
+//
+//        System.out.println("第5个节点的值是：" + test.get(5).val);
+        /**
+         * 测试循环双链表
+         */
+        LoopDoubleList<Integer> test = new LoopDoubleList<Integer>();
+        Integer[] arr = {1, 2, 3, 4};
+        System.out.println("链表是否为空：" + test.isEmpty());
         test.init(arr);
         test.consoleList();
-
-        test.insert(1, 2);
-        test.insert(2, 3);
-        test.consoleList();
+        System.out.println("链表的长度是：" + test.getLength());
 
         test.remove(1);
         test.consoleList();
-        test.insert(3, 1);
+        System.out.println("链表的长度是：" + test.getLength());
+
+        test.insert(4, 6);
         test.consoleList();
 
+        test.insert(3, 7);
+        test.consoleList();
+
+        System.out.println("第1个节点的值是：" + test.get(1).val);
+        System.out.println("第2个节点的值是：" + test.get(2).val);
+
+        System.out.println("链表是否为空：" + test.isEmpty());
         test.clear();
-        test.consoleList();
-
-        Integer[] more = {1, 2, 3, 4};
-        test.init(more);
-        test.consoleList();
-
-        System.out.println("第5个节点的值是：" + test.get(5).val);
+        System.out.println("链表是否为空：" + test.isEmpty());
     }
 }
