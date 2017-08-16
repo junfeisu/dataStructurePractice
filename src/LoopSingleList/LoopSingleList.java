@@ -78,23 +78,26 @@ public class LoopSingleList<T> {
         Node<T> walkNode = head;
         Node<T> prevNode = null;
         int count = 1;
-        while (index != count) {
+        index = index % getLength();
+        while (index != count && walkNode.next != head) {
             prevNode = walkNode;
             walkNode = walkNode.next;
             count++;
         }
 
-        Node<T> insertNode = new Node<T>(data);
-        insertNode.next = walkNode;
-        if (prevNode == null) {
-            Node<T> temp = head;
-            while (temp.next != head) {
-                temp = temp.next;
+        if (index == count) {
+            Node<T> insertNode = new Node<T>(data);
+            insertNode.next = walkNode;
+            if (prevNode == null) {
+                Node<T> temp = head;
+                while (temp.next != head) {
+                    temp = temp.next;
+                }
+                temp.next = insertNode;
+                head = insertNode;
+            } else {
+                prevNode.next = insertNode;
             }
-            temp.next = insertNode;
-            head = insertNode;
-        } else {
-            prevNode.next = insertNode;
         }
 
         return head;
@@ -138,12 +141,17 @@ public class LoopSingleList<T> {
 
         Node<T> walkNode = head;
         int count = 1;
-        while (index != count) {
+        index = index % getLength();
+        while (index != count && walkNode.next != head) {
             walkNode = walkNode.next;
             count++;
         }
+        if (index != count) {
+            return null;
+        } else {
+            return walkNode;
+        }
 
-        return walkNode;
     }
 
     public void consoleList() {
