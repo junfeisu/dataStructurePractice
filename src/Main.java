@@ -1,4 +1,5 @@
 import DoubleLinkList.DoubleLinkList;
+import LinkStack.LinkStack;
 import LoopDoubleList.LoopDoubleList;
 import LoopSingleList.LoopSingleList;
 import SequenceList.SequenceList;
@@ -129,16 +130,36 @@ public class Main {
         /**
          * 测试顺序栈
          */
-        SequenceStack<Integer> test = new SequenceStack<Integer>();
+//        SequenceStack<Integer> test = new SequenceStack<Integer>();
+//        System.out.println("是否为空栈：" + test.isEmpty());
+//        test.consoleStack();
+//        test.push(4);
+//        test.push(3);
+//        test.consoleStack();
+//        test.pop();
+//        test.push(2);
+//        test.consoleStack();
+//        System.out.println("栈的长度为：" + test.getLength());
+//        System.out.println("栈顶元素为：" + test.getPeek());
+        /**
+         * 测试链栈
+         */
+        LinkStack<Integer> test = new LinkStack<Integer>();
         System.out.println("是否为空栈：" + test.isEmpty());
         test.consoleStack();
-        test.push(4);
+
         test.push(3);
+        test.push(1);
+        test.push(5);
         test.consoleStack();
-        test.pop();
-        test.push(2);
+        System.out.println("栈内的元素个数是：" + test.getLength());
+
+        System.out.println("出栈的元素是：" + test.pop().val);
         test.consoleStack();
-        System.out.println("栈的长度为：" + test.getLength());
-        System.out.println("栈顶元素为：" + test.getPeek());
+        System.out.println("栈顶元素是：" + test.getPeek().val);
+
+        test.clear();
+        test.consoleStack();
+        System.out.println("栈内的元素个数是：" + test.getLength());
     }
 }
