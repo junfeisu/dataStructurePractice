@@ -229,7 +229,7 @@ public class Main {
          * 测试二叉树
          */
         BinaryTree<Integer> test = new BinaryTree<>();
-        Integer[] arr = {1, 2, 3, 4, 5};
+        Integer[] arr = {1, 2, 3, 4, 5, null, 7, 0, 8, 9, 6};
         test.init(arr);
         test.consoleBinaryTree();
     }
