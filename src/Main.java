@@ -8,7 +8,8 @@ import SequenceList.SequenceList;
 import SequenceQueue.SequenceQueue;
 import SequenceStack.SequenceStack;
 import SingleList.SingleList;
-import SingleList.Node;
+import Tree.Node;
+import Tree.BinaryTree;
 
 /**
  * Created by sujunfei on 2017/8/14.
@@ -208,21 +209,28 @@ public class Main {
         /**
          * 测试循环链队
          */
-        LoopLinkQueue<Integer> test = new LoopLinkQueue<Integer>(2);
-        test.consoleQueue();
-        System.out.println("是否是空队列:" + test.isEmpty());
-
-        test.enQueue(4);
-        test.enQueue(9);
-        test.consoleQueue();
-
-        System.out.println("出队的元素是：" + test.deQueue().val);
-        test.consoleQueue();
-        System.out.println("队列中元素的个数是：" + test.getLength());
-        System.out.println("队首元素是：" + test.getFront().val);
-
-        test.clear();
-        test.consoleQueue();
-        System.out.println("是否是空队列:" + test.isEmpty());
+//        LoopLinkQueue<Integer> test = new LoopLinkQueue<Integer>(2);
+//        test.consoleQueue();
+//        System.out.println("是否是空队列:" + test.isEmpty());
+//
+//        test.enQueue(4);
+//        test.enQueue(9);
+//        test.consoleQueue();
+//
+//        System.out.println("出队的元素是：" + test.deQueue().val);
+//        test.consoleQueue();
+//        System.out.println("队列中元素的个数是：" + test.getLength());
+//        System.out.println("队首元素是：" + test.getFront().val);
+//
+//        test.clear();
+//        test.consoleQueue();
+//        System.out.println("是否是空队列:" + test.isEmpty());
+        /**
+         * 测试二叉树
+         */
+        BinaryTree<Integer> test = new BinaryTree<>();
+        Integer[] arr = {1, 2, 3, 4, 5};
+        test.init(arr);
+        test.consoleBinaryTree();
     }
 }
