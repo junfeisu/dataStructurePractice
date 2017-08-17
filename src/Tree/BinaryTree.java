@@ -43,6 +43,9 @@ public class BinaryTree<T> {
         if (index >= arrSize) {
             return root;
         } else {
+            if (arr[index] == null) {
+                return null;
+            }
             Node<T> currentNode = new Node<>(arr[index]);
             if (index == 0) {
                 root = currentNode;
@@ -102,13 +105,19 @@ public class BinaryTree<T> {
                 parentStack.push(walkNode);
                 walkNode = walkNode.leftChild;
             } else {
-                Node<T> lastParentNode = parentStack.pop();
-                while (!parentStack.isEmpty() && lastParentNode.rightChild == null) {
-                    lastParentNode = parentStack.pop();
-                }
-                if (lastParentNode == null) {
-                    return;
+                if (parentStack.isEmpty()) {
+                    if (walkNode.rightChild == null) {
+                        return;
+                    }
+                    walkNode = walkNode.rightChild;
                 } else {
+                    Node<T> lastParentNode = parentStack.pop();
+                    while (!parentStack.isEmpty() && lastParentNode.rightChild == null) {
+                        lastParentNode = parentStack.pop();
+                    }
+                    if (lastParentNode == null) {
+                        return;
+                    }
                     walkNode = lastParentNode.rightChild;
                 }
             }
@@ -126,18 +135,22 @@ public class BinaryTree<T> {
             } else {
                 System.out.println(walkNode.val + " ");
                 if (parentStack.isEmpty()) {
-                    return;
-                }
-                Node<T> lastParentNode = parentStack.pop();
-                System.out.println(lastParentNode.val + " ");
-                while (!parentStack.isEmpty() && lastParentNode.rightChild == null) {
-                    lastParentNode = parentStack.pop();
-                    System.out.println(lastParentNode.val + " ");
-                }
-                if (lastParentNode == null) {
-                    return;
+                    if (walkNode.rightChild == null) {
+                        return;
+                    }
+                    walkNode = walkNode.rightChild;
                 } else {
-                    walkNode = lastParentNode.rightChild;
+                    Node<T> lastParentNode = parentStack.pop();
+                    System.out.println(lastParentNode.val + " ");
+                    while (!parentStack.isEmpty() && lastParentNode.rightChild == null) {
+                        lastParentNode = parentStack.pop();
+                        System.out.println(lastParentNode.val + " ");
+                    }
+                    if (lastParentNode == null) {
+                        return;
+                    } else {
+                        walkNode = lastParentNode.rightChild;
+                    }
                 }
             }
         }
@@ -179,7 +192,7 @@ public class BinaryTree<T> {
         if (isEmpty()) {
             System.out.println("这是一颗空树");
         } else {
-            postOrder();
+            inOrder();
 //            inOrderTraverse(root);
 //            postOrderTraverse(root);
 //            inOrderTraverse(root);
