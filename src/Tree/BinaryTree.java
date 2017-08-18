@@ -148,9 +148,8 @@ public class BinaryTree<T> {
                     }
                     if (lastParentNode == null) {
                         return;
-                    } else {
-                        walkNode = lastParentNode.rightChild;
                     }
+                    walkNode = lastParentNode.rightChild;
                 }
             }
         }
@@ -187,6 +186,37 @@ public class BinaryTree<T> {
             }
         }
     }
+
+    // 获取二叉树的深度
+    public int getDepth(Node<T> parentNode) {
+        if (parentNode == null) {
+            return 0;
+        }
+        int leftDepth = getDepth(parentNode.leftChild);
+        int rightDepth = getDepth(parentNode.rightChild);
+
+        return Math.max(leftDepth, rightDepth) + 1;
+    }
+
+    /**
+     * 通过递归左子树和右子树的，分别得到左子树和右子树的节点数，当然他们同时包括了根节点
+     * 所以最终的结果减去计算过俩次的根节点的多余一次就是二叉树的节点数
+     */
+    public int getNodesNum(Node<T> parentNode) {
+        if (parentNode == null) {
+            return 1;
+        }
+
+        int leftNums = getNodesNum(parentNode.leftChild);
+        int rightNums = getNodesNum(parentNode.rightChild);
+
+        return leftNums + rightNums;
+    }
+
+    // 判断二叉树是不是完全二叉树
+//    public boolean isCompletedBinaryTree() {
+//
+//    }
 
     public void consoleBinaryTree() {
         if (isEmpty()) {
