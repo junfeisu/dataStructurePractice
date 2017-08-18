@@ -231,9 +231,9 @@ public class Main {
         BinaryTree<Integer> test = new BinaryTree<>();
         Integer[] arr = {1, 2, 3, 4, 5, null, 7, 0, 8, 9, 6, null, null, 11, 12};
         test.init(arr);
-        test.consoleBinaryTree();
         System.out.println("二叉树的深度为：" + test.getDepth(test.getRoot()));
         int nodeNums = test.getNodesNum(test.getRoot()) - 1;
         System.out.println("二叉树的节点数为：" + nodeNums);
+        test.consoleBinaryTree();
     }
 }

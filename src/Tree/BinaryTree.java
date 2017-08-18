@@ -1,7 +1,6 @@
 package Tree;
 
 import SequenceStack.SequenceStack;
-
 /**
  * Created by sujunfei on 2017/8/17.
  */
@@ -72,7 +71,7 @@ public class BinaryTree<T> {
     public void inOrderTraverse(Node<T> parentNode) {
         if (parentNode != null) {
             inOrderTraverse(parentNode.leftChild);
-            System.out.println(parentNode.val + " ");
+            System.out.print(parentNode.val + " ");
             inOrderTraverse(parentNode.rightChild);
         }
     }
@@ -80,7 +79,7 @@ public class BinaryTree<T> {
     // 递归实现前序遍历二叉树
     public void preOrderTraverse(Node<T> parentNode) {
         if (parentNode != null) {
-            System.out.println(parentNode.val + " ");
+            System.out.print(parentNode.val + " ");
             preOrderTraverse(parentNode.leftChild);
             preOrderTraverse(parentNode.rightChild);
         }
@@ -91,7 +90,7 @@ public class BinaryTree<T> {
         if (parentNode != null) {
             postOrderTraverse(parentNode.leftChild);
             postOrderTraverse(parentNode.rightChild);
-            System.out.println(parentNode.val + " ");
+            System.out.print(parentNode.val + " ");
         }
     }
 
@@ -100,7 +99,7 @@ public class BinaryTree<T> {
         SequenceStack<Node> parentStack = new SequenceStack<Node>();
         Node<T> walkNode = root;
         while (walkNode != null) {
-            System.out.println(walkNode.val + " ");
+            System.out.print(walkNode.val + " ");
             if (walkNode.leftChild != null) {
                 parentStack.push(walkNode);
                 walkNode = walkNode.leftChild;
@@ -133,7 +132,7 @@ public class BinaryTree<T> {
                 parentStack.push(walkNode);
                 walkNode = walkNode.leftChild;
             } else {
-                System.out.println(walkNode.val + " ");
+                System.out.print(walkNode.val + " ");
                 if (parentStack.isEmpty()) {
                     if (walkNode.rightChild == null) {
                         return;
@@ -141,10 +140,10 @@ public class BinaryTree<T> {
                     walkNode = walkNode.rightChild;
                 } else {
                     Node<T> lastParentNode = parentStack.pop();
-                    System.out.println(lastParentNode.val + " ");
+                    System.out.print(lastParentNode.val + " ");
                     while (!parentStack.isEmpty() && lastParentNode.rightChild == null) {
                         lastParentNode = parentStack.pop();
-                        System.out.println(lastParentNode.val + " ");
+                        System.out.print(lastParentNode.val + " ");
                     }
                     if (lastParentNode == null) {
                         return;
@@ -158,32 +157,26 @@ public class BinaryTree<T> {
     // 非递归实现后序遍历
     public void postOrder() {
         SequenceStack<Node> parentStack = new SequenceStack<Node>();
-        Node<T> walkNode = root;
-        int count = 0;
-        while (walkNode != null) {
-            if (walkNode.leftChild != null) {
-                parentStack.push(walkNode);
-                walkNode = walkNode.leftChild;
-            } else {
-//                Node<T> lastParentNode = parentStack.getPeek();
-//                count++;
-//                if (lastParentNode.rightChild != null && lastParentNode.rightChild.leftChild == null && lastParentNode.rightChild.rightChild == null) {
-//                    System.out.println(lastParentNode.rightChild.val + " ");
-//                    for (int i = 0; i < count; i++) {
-//                        lastParentNode = parentStack.pop();
-//                        System.out.println(lastParentNode.val + " ");
-//                    }
-//                    count = 0;
-//                    walkNode = parentStack.pop();
-//                    if (walkNode == null) {
-//                        return;
-//                    }
-//                    if (walkNode.rightChild != null) {
-//                        walkNode = walkNode.rightChild;
-//                    }
-//                }
+        parentStack.push(root);
+        Node<T> prev = null;
 
+        while (!parentStack.isEmpty()) {
+            Node<T> currNode = parentStack.getPeek();
+            if (prev == null || prev.leftChild == currNode || prev.rightChild == currNode) {
+                if (currNode.leftChild != null) {
+                    parentStack.push(currNode.leftChild);
+                } else if (currNode.rightChild != null) {
+                    parentStack.push(currNode.rightChild);
+                }
+            } else if (currNode.leftChild == prev) {
+                if (currNode.rightChild != null) {
+                    parentStack.push(currNode.rightChild);
+                }
+            } else {
+                System.out.print(currNode.val + " ");
+                parentStack.pop();
             }
+            prev = currNode;
         }
     }
 
@@ -213,16 +206,23 @@ public class BinaryTree<T> {
         return leftNums + rightNums;
     }
 
-    // 判断二叉树是不是完全二叉树
-//    public boolean isCompletedBinaryTree() {
-//
-//    }
+    // 判断二叉树是不是满二叉树
+    public boolean isCompletedBinaryTree() {
+        // 二叉树的节点数
+        int nodesNum = getNodesNum(root) - 1;
+        int treeDepth = getDepth(root);
+        if (nodesNum == Math.pow(2, treeDepth) - 1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     public void consoleBinaryTree() {
         if (isEmpty()) {
             System.out.println("这是一颗空树");
         } else {
-            inOrder();
+            postOrder();
 //            inOrderTraverse(root);
 //            postOrderTraverse(root);
 //            inOrderTraverse(root);
