@@ -235,6 +235,7 @@ public class BinaryTree<T> {
         return leftNums + rightNums;
     }
 
+    // 获取最大节点
     public Node<Integer> getMaxNode(Node<Integer> parentNode) {
         if (parentNode == null) {
             return null;
@@ -245,6 +246,16 @@ public class BinaryTree<T> {
         getMaxNode(parentNode.rightChild);
 
         return maxNode;
+    }
+
+    // 插入节点
+    public void insertNode(T data) {
+       if (isEmpty()) {
+           root = new Node<>(data);
+           return;
+       }
+
+
     }
 
     // 判断二叉树是不是满二叉树
@@ -264,9 +275,6 @@ public class BinaryTree<T> {
             System.out.println("这是一颗空树");
         } else {
             otherPostOrder();
-//            inOrderTraverse(root);
-//            postOrderTraverse(root);
-//            inOrderTraverse(root);
         }
         System.out.println("");
     }
