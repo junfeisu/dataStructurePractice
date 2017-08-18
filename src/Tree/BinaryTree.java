@@ -8,6 +8,8 @@ public class BinaryTree<T> {
     // 二叉树的根节点
     private Node<T> root;
 
+    private Node<Integer> maxNode = new Node<>(Integer.MIN_VALUE);
+
     public Node<T> getRoot() {
         return root;
     }
@@ -231,6 +233,18 @@ public class BinaryTree<T> {
         int rightNums = getNodesNum(parentNode.rightChild);
 
         return leftNums + rightNums;
+    }
+
+    public Node<Integer> getMaxNode(Node<Integer> parentNode) {
+        if (parentNode == null) {
+            return null;
+        }
+
+        maxNode = (Integer)maxNode.val > (Integer) parentNode.val ? maxNode : parentNode;
+        getMaxNode(parentNode.leftChild);
+        getMaxNode(parentNode.rightChild);
+
+        return maxNode;
     }
 
     // 判断二叉树是不是满二叉树

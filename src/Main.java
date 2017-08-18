@@ -235,5 +235,6 @@ public class Main {
         int nodeNums = test.getNodesNum(test.getRoot()) - 1;
         System.out.println("二叉树的节点数为：" + nodeNums);
         test.consoleBinaryTree();
+        System.out.println("二叉树种最大节点是：" + test.getMaxNode(test.getRoot()).val);
     }
 }
