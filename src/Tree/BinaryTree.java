@@ -104,6 +104,7 @@ public class BinaryTree<T> {
                 parentStack.push(walkNode);
                 walkNode = walkNode.leftChild;
             } else {
+                // 只有右子树的情况
                 if (parentStack.isEmpty()) {
                     if (walkNode.rightChild == null) {
                         return;
@@ -180,6 +181,32 @@ public class BinaryTree<T> {
         }
     }
 
+    /**
+     * 将根节点压入第一个栈
+     * 弹出第一个栈的一个元素，将这个元素压入第二个栈
+     * 将弹出的这个元素的左右节点先后压入第一个栈
+     * 重复二三步骤直到第一个栈为空
+     * 最后按序弹出第二个栈中的元素就是后序遍历的结果
+     */
+    public void otherPostOrder() {
+        SequenceStack<Node> parentStack = new SequenceStack<Node>();
+        SequenceStack<Node> secondStack = new SequenceStack<Node>();
+        parentStack.push(root);
+        while (!parentStack.isEmpty()) {
+            Node<T> currNode = parentStack.pop();
+            if (currNode.leftChild != null) {
+                parentStack.push(currNode.leftChild);
+            }
+            if (currNode.rightChild != null) {
+                parentStack.push(currNode.rightChild);
+            }
+            secondStack.push(currNode);
+        }
+        while (!secondStack.isEmpty()) {
+            System.out.print(secondStack.pop().val + " ");
+        }
+    }
+
     // 获取二叉树的深度
     public int getDepth(Node<T> parentNode) {
         if (parentNode == null) {
@@ -222,7 +249,7 @@ public class BinaryTree<T> {
         if (isEmpty()) {
             System.out.println("这是一颗空树");
         } else {
-            postOrder();
+            otherPostOrder();
 //            inOrderTraverse(root);
 //            postOrderTraverse(root);
 //            inOrderTraverse(root);
