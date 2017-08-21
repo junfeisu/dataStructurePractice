@@ -248,16 +248,6 @@ public class BinaryTree<T> {
         return maxNode;
     }
 
-    // 插入节点
-    public void insertNode(T data) {
-       if (isEmpty()) {
-           root = new Node<>(data);
-           return;
-       }
-
-
-    }
-
     // 判断二叉树是不是满二叉树
     public boolean isCompletedBinaryTree() {
         // 二叉树的节点数
