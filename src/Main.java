@@ -8,6 +8,7 @@ import SequenceList.SequenceList;
 import SequenceQueue.SequenceQueue;
 import SequenceStack.SequenceStack;
 import SingleList.SingleList;
+import Sort.BarrelSort;
 import Tree.Node;
 import Tree.BinaryTree;
 
@@ -228,13 +229,20 @@ public class Main {
         /**
          * 测试二叉树
          */
-        BinaryTree<Integer> test = new BinaryTree<>();
-        Integer[] arr = {1, 2, 3, 4, 5, null, 7, 0, 8, 9, 6, null, null, 11, 12};
-        test.init(arr);
-        System.out.println("二叉树的深度为：" + test.getDepth(test.getRoot()));
-        int nodeNums = test.getNodesNum(test.getRoot()) - 1;
-        System.out.println("二叉树的节点数为：" + nodeNums);
-        test.consoleBinaryTree();
-        System.out.println("二叉树种最大节点是：" + test.getMaxNode(test.getRoot()).val);
+//        BinaryTree<Integer> test = new BinaryTree<>();
+//        Integer[] arr = {1, 2, 3, 4, 5, null, 7, 0, 8, 9, 6, null, null, 11, 12};
+//        test.init(arr);
+//        System.out.println("二叉树的深度为：" + test.getDepth(test.getRoot()));
+//        int nodeNums = test.getNodesNum(test.getRoot()) - 1;
+//        System.out.println("二叉树的节点数为：" + nodeNums);
+//        test.consoleBinaryTree();
+//        System.out.println("二叉树种最大节点是：" + test.getMaxNode(test.getRoot()).val);
+
+        /**
+         * 测试桶排序
+         */
+        BarrelSort test = new BarrelSort();
+        int[] arr = {5, 2, 4, 1, 7, 9, 6, 7, 2};
+        test.consoleArr(test.sort(arr));
     }
 }
