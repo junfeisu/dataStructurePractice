@@ -9,6 +9,7 @@ import SequenceQueue.SequenceQueue;
 import SequenceStack.SequenceStack;
 import SingleList.SingleList;
 import Sort.BarrelSort;
+import Sort.BubbleSort;
 import Tree.Node;
 import Tree.BinaryTree;
 
@@ -241,8 +242,9 @@ public class Main {
         /**
          * 测试桶排序
          */
-        BarrelSort test = new BarrelSort();
+        BubbleSort test = new BubbleSort();
         int[] arr = {5, 2, 4, 1, 7, 9, 6, 7, 2};
         test.consoleArr(test.sort(arr));
+        test.consoleArr(test.improvedSort(arr));
     }
 }
