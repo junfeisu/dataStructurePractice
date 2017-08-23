@@ -270,9 +270,16 @@ public class Main {
         /**
          * 测试快速排序
          */
-        QuickSort test = new QuickSort();
+//        QuickSort test = new QuickSort();
 //        int[] arr = {5, 2, 4, 1, 7, 9, 6, 7, 2};
-        int[] arr = {7, 6, 5, 4, 3, 2, 1};
-        test.consoleArr(test.sort(arr, 0, arr.length - 1));
+//        int[] arr = {7, 6, 5, 4, 3, 2, 1};
+//        test.consoleArr(test.sort(arr, 0, arr.length - 1));
+
+        /**
+         * 测试堆排序
+         */
+        HeapSort test = new HeapSort();
+        int[] arr = {5, 2, 4, 1, 7, 9, 6, 7, 2};
+        test.consoleArr(test.sort(arr));
     }
 }
