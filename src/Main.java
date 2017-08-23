@@ -8,10 +8,7 @@ import SequenceList.SequenceList;
 import SequenceQueue.SequenceQueue;
 import SequenceStack.SequenceStack;
 import SingleList.SingleList;
-import Sort.BarrelSort;
-import Sort.BubbleSort;
-import Sort.InsertSort;
-import Sort.SelectSort;
+import Sort.*;
 import Tree.Node;
 import Tree.BinaryTree;
 
@@ -266,8 +263,16 @@ public class Main {
         /**
          * 测试插入排序
          */
-        InsertSort test = new InsertSort();
-        int[] arr = {5, 2, 4, 1, 7, 9, 6, 7, 2};
-        test.consoleArr(test.sort(arr));
+//        InsertSort test = new InsertSort();
+//        int[] arr = {5, 2, 4, 1, 7, 9, 6, 7, 2};
+//        test.consoleArr(test.sort(arr));
+
+        /**
+         * 测试快速排序
+         */
+        QuickSort test = new QuickSort();
+//        int[] arr = {5, 2, 4, 1, 7, 9, 6, 7, 2};
+        int[] arr = {7, 6, 5, 4, 3, 2, 1};
+        test.consoleArr(test.sort(arr, 0, arr.length - 1));
     }
 }
